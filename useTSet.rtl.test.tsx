@@ -4,7 +4,7 @@
 
 import { cleanup, render, screen } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
-import { useTSet } from './src/index'
+import useT from './src/index'
 
 afterEach(cleanup)
 
@@ -27,7 +27,7 @@ function TestComponent() {
     hasObjectChip,
     undo,
     objectChipsArray,
-  ] = useTSet<ExampleObject>()
+  ] = useT<ExampleObject>()
   const addObjectChip = (objectChip: ExampleObject) => {
     dispatchObjectChips({ type: 'add', value: objectChip })
   }
@@ -88,7 +88,7 @@ function TestComponent() {
   )
 }
 
-describe('useTSet', () => {
+describe('useT', () => {
   it('should add, remove, clear, undo, and check if a value exists in the set', async () => {
     const { user } = setup(<TestComponent />)
 
